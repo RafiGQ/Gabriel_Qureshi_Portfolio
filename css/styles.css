@@ -1,0 +1,2339 @@
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #212529;
+}
+
+main {
+  flex-shrink: 0;
+}
+
+h1,
+h2,
+h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-family: "Geist", serif;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h3,
+.sub-heading {
+  font-size: calc(1.3rem + 0.6vw);
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: #1e30f3;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #1826c2;
+}
+
+img,
+svg {
+  vertical-align: middle;
+}
+
+button {
+  margin: 0;
+  font-family: inherit;
+  line-height: inherit;
+  cursor: pointer;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 2100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 3rem;
+}
+
+.big-title {
+  font-size: calc(1.425rem + 2.1vw);
+  line-height: 1.2;
+}
+
+.sub-heading {
+  margin-bottom: 1rem;
+}
+
+.intro-text {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+@media (min-width: 1200px) {
+  h3,
+  .sub-heading {
+    font-size: 1.75rem;
+  }
+
+  .big-title {
+    font-size: 3rem;
+  }
+}
+
+/* ---------- navigation ---------- */
+.site-nav {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  background-color: #2B2924;
+}
+
+.nav-inner {
+  display: flex;
+  flex-wrap: inherit;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Bull-Icon {
+  margin-right: 1.5rem;
+}
+
+.brand {
+  margin-right: 1rem;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  font-family: "Geist", serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.9);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brand span {
+  color: #EFE7DC;
+}
+
+.nav-toggle {
+  padding: 0.25rem 0.75rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.55);
+  background-color: transparent;
+  border: none;
+  border-radius: 0.375rem;
+  transition: box-shadow 0.15s ease-in-out;
+}
+
+.nav-toggle:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem #efe7dc;
+}
+
+.nav-toggle-icon {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23efe7dc' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+.nav-menu {
+  display: none;
+  flex-basis: 100%;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 0.5rem auto;
+  padding-left: 0;
+  list-style: none;
+  font-size: 0.875em;
+}
+
+.nav-links a {
+  display: block;
+  padding: 0.5rem 0;
+  font-weight: 600;
+  color: #D4C7B4;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-toggle,
+  .nav-links a {
+    transition: none;
+  }
+}
+
+@media (min-width: 1100px) {
+  .site-nav {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-basis: auto;
+  }
+
+  .nav-links {
+    flex-direction: row;
+    margin-bottom: 0;
+  }
+
+  .nav-links a {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+/* ---------- footer ---------- */
+footer {
+  margin-top: auto;
+  padding: 2.5rem 0 1.25rem;
+  background-color: #2B2924;
+}
+
+.footer-wrapper {
+  font-family: "Geist", serif;
+  color: rgb(212, 199, 180);
+}
+
+.footer-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, max-content));
+  justify-content: center;
+  gap: 4rem;
+  text-align: center;
+}
+
+.footer-heading {
+  margin-bottom: 0.75rem;
+  color: #EFE7DC;
+  font-size: 1rem;
+}
+
+.footer-column:first-child {
+  text-align: left;
+}
+
+.footer-links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-links li + li {
+  margin-top: 0.5rem;
+}
+
+.footer-links a {
+  color: rgb(212, 199, 180);
+  text-decoration: none;
+}
+
+.footer-links a:hover,
+.footer-links a:focus-visible {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer-links a[aria-current="page"] {
+  color: #fff;
+  font-weight: 600;
+}
+
+.footer-column:last-child .footer-links a[href^="mailto:"] {
+  overflow-wrap: anywhere;
+}
+
+.footer-cv-button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1.1rem;
+  border: 1px solid #D4C7B4;
+  border-radius: 2rem;
+  background: transparent;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.footer-cv-button:hover,
+.footer-cv-button:focus-visible {
+  background: #d4c7b4;
+  color: var(--ink);
+}
+
+.footer-copyright {
+  margin: 2rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(212, 199, 180, 0.25);
+  color: rgb(212, 199, 180);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .footer-main {
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .footer-columns {
+    gap: clamp(1.5rem, 8vw, 4rem);
+  }
+}
+
+/* ---------- buttons ---------- */
+.cssbuttons-io-button {
+  background: var(--accent);
+  color: var(--on-accent);
+  text-decoration: none;
+  font-family: inherit;
+  padding: 0.35em;
+  padding-left: 1.2em;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 0.9em;
+  border: none;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 0 1.6em -0.6em var(--accent-dark);
+  position: relative;
+  height: 2.8em;
+  padding-right: 3.3em;
+  cursor: pointer;
+}
+
+.cssbuttons-io-button:visited,
+.cssbuttons-io-button:hover,
+.cssbuttons-io-button:focus,
+.cssbuttons-io-button:active {
+  color: var(--on-accent);
+  text-decoration: none;
+}
+
+.cssbuttons-io-button .icon {
+  background: white;
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 0.7em;
+  right: 0.3em;
+  transition: all 0.3s;
+}
+
+.cssbuttons-io-button:hover .icon {
+  width: calc(100% - 0.6em);
+}
+
+.cssbuttons-io-button .icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: #2B2924;
+}
+
+.cssbuttons-io-button:hover .icon svg {
+  transform: translateX(0.1em);
+}
+
+.cssbuttons-io-button:active .icon {
+  transform: scale(0.95);
+}
+
+.cssbuttons-io-button:hover {
+  background: var(--accent-dark);
+}
+
+/* ---------- image zoom and lightbox ---------- */
+.image-zoom-trigger {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  border-radius: 1rem;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.image-zoom-trigger:focus-visible {
+  outline-offset: 4px;
+}
+
+.image-zoom-hint {
+  margin: 0.75rem 0 0;
+  color: #4a463e;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.image-credit {
+  margin: 1rem 0 0;
+  color: #4a463e;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.image-lightbox {
+  position: fixed;
+  width: min(92vw, 80rem);
+  max-width: none;
+  max-height: 92vh;
+  padding: 3.5rem 1rem 1rem;
+  border: 0;
+  border-radius: 0.75rem;
+  background: #1b1a18;
+  color: #fff;
+}
+
+.image-lightbox::backdrop {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.image-lightbox img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(92vh - 5rem);
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+/* tall (portrait) images scroll inside the lightbox so they stay readable */
+.image-lightbox.tall {
+  overflow-y: auto;
+}
+
+.image-lightbox.tall img {
+  width: min(100%, 40rem);
+  max-height: none;
+}
+
+.image-lightbox-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid #fff;
+  border-radius: 0.25rem;
+  background: transparent;
+  color: #fff;
+}
+
+/* ---------- design tokens and page theme ---------- */
+:root {
+  --ink: #2b2924;
+  --sand: #ded6cb;
+  --cream: #f8f5ef;
+  --mute: #4a463e;
+  --line: #cfc6b8;
+  --teal: #065f65;
+  --teal-dark: #04494e;
+  --plum: #8a2f45; /* claret, ticketing accent */
+  --plum-dark: #6c2234;
+  --accent: var(--teal);
+  --accent-dark: var(--teal-dark);
+  --on-accent: #fff;
+  --accent-text: var(--accent);
+}
+
+body.ticketing {
+  --accent: var(--plum);
+  --accent-dark: var(--plum-dark);
+  --accent-text: var(--plum);
+}
+
+body.home,
+body.project-page {
+  font-family: "Geist",sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--cream);
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent-text);
+  outline-offset: 3px;
+}
+
+.nav-links a[aria-current="page"] {
+  color: #fff;
+}
+
+.image-zoom-trigger {
+  width: 100%;
+}
+
+.container {
+  width: min(100% - 2.5rem,70rem);
+  margin-inline: auto;
+}
+
+/* ---------- hero (all pages) ---------- */
+.page-hero {
+  padding: clamp(2.5rem,7vw,5.5rem) 0;
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.page-hero .container {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.page-hero :focus-visible {
+  outline-color: var(--cream);
+}
+
+.tag {
+  display: inline-block;
+  margin: 0 .4rem .5rem 0;
+  padding: .25rem .85rem;
+  border-radius: 2rem;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: .85rem;
+  font-weight: 600;
+}
+
+.page-hero h1 {
+  margin: 1rem 0;
+  text-wrap: balance;
+  font: 400 clamp(2.5rem,6.5vw,4.75rem)/1.05 "Cantata One",serif;
+  letter-spacing: -.01em;
+}
+
+.hero-lead {
+  max-width: 34rem;
+  margin: 0;
+  font-size: 1.25rem;
+  color: #d4c7b4;
+}
+
+.hero-stage {
+  margin: 0;
+  padding: clamp(1rem,3vw,2rem);
+  border-radius: 1.25rem;
+  background: var(--accent);
+}
+
+.hero-stage img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: .5rem;
+}
+
+.hero-stage figcaption {
+  margin-top: .75rem;
+  color: var(--on-accent);
+  font-size: .85rem;
+}
+
+/* ---------- quick facts bar ---------- */
+.facts-bar {
+  background: var(--sand);
+  border-bottom: 1px solid var(--line);
+}
+
+.facts-bar dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(12rem,1fr));
+  gap: 1.25rem 2rem;
+  margin: 0;
+  padding: 1.75rem 0;
+}
+
+.facts-bar dt {
+  margin-bottom: .15rem;
+  color: var(--accent-text);
+  font-size: .85rem;
+  font-weight: 700;
+}
+
+.facts-bar dd {
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* ---------- project summary: problem, approach, result ---------- */
+.project-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(15rem,1fr));
+  gap: 2.25rem;
+  padding: clamp(3.125rem,7.5vw,5rem) 0;
+}
+
+.project-summary div {
+  padding-top: 1rem;
+  border-top: .35rem solid var(--accent);
+}
+
+.project-summary h2 {
+  margin-bottom: .6rem;
+  font-size: 1.5rem;
+}
+
+.project-summary p {
+  margin: 0;
+  color: var(--mute);
+}
+
+/* ---------- project sections: heading left, content right ---------- */
+.project-section {
+  padding: clamp(3.75rem,8.75vw,6.875rem) 0;
+}
+
+.project-section.alt {
+  background: #fff;
+}
+
+.project-section>.container {
+  display: grid;
+  gap: 1.55rem 4rem;
+}
+
+.project-section h2 {
+  margin: 0;
+  padding-top: 1rem;
+  border-top: .35rem solid var(--accent);
+  font: 400 clamp(1.9rem,3.4vw,2.4rem)/1.2 "Cantata One",serif;
+  letter-spacing: .005em;
+}
+
+.section-body {
+  min-width: 0;
+}
+
+.section-body p {
+  max-width: 62ch;
+  color: var(--mute);
+}
+
+.section-body>p:first-child {
+  margin-top: 0;
+}
+
+.section-body h3 {
+  margin-bottom: .5rem;
+  font-size: 1.2rem;
+}
+
+.step-list,
+.tick-list {
+  margin: 1.25rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step-list {
+  counter-reset: s;
+}
+
+.step-list li,
+.tick-list li {
+  display: flex;
+  gap: 1rem;
+  padding: .9rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.step-list li {
+  counter-increment: s;
+}
+
+.step-list li::before {
+  content: counter(s);
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+.tick-list li::before {
+  content: "";
+  flex: none;
+  width: .6rem;
+  height: .6rem;
+  margin-top: .6rem;
+  background: var(--accent);
+}
+
+/* ---------- research findings ---------- */
+.finding-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(15rem,1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.finding-grid div {
+  padding: 1.5rem;
+  border-radius: .75rem;
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.finding-grid h3 {
+  margin-bottom: .6rem;
+  font: 400 1.35rem/1.2 "Cantata One",serif;
+}
+
+.finding-grid p {
+  margin: 0;
+  color: #d4c7b4;
+}
+
+/* ---------- list of changes ---------- */
+.change-item {
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.change-item h3 {
+  font-size: 1.15rem;
+}
+
+.change-item dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: .35rem 1.25rem;
+  margin: 0;
+  color: var(--mute);
+}
+
+.change-item dt {
+  color: var(--accent-text);
+  font-weight: 700;
+}
+
+.change-item dd {
+  margin: 0;
+}
+
+/* ---------- figures ---------- */
+.figure-block {
+  margin: 1.75rem 0;
+}
+
+.figure-block img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: .75rem;
+  box-shadow: 0 .5rem 1.5rem rgba(43,41,36,.18);
+}
+
+.figure-block figcaption {
+  margin-top: .6rem;
+  color: var(--mute);
+  font-size: .85rem;
+}
+
+.figure-pair {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(16rem,1fr));
+  gap: 1.25rem;
+}
+
+.figure-pair .figure-block {
+  margin: 1.25rem 0 0;
+}
+
+/* ---------- design system board (portrait screenshots) ---------- */
+.system-board {
+  display: grid;
+  grid-column: 1 / -1;
+  gap: 2.5rem 1.5rem;
+  align-items: start;
+  margin-top: 1rem;
+}
+
+.system-panel {
+  margin: 0;
+}
+
+/* dark frame with a small window bar, like an app screenshot */
+.device-frame {
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background: var(--ink);
+  box-shadow: 0 0.5rem 1.5rem rgba(43, 41, 36, 0.18);
+}
+
+.device-bar {
+  display: flex;
+  align-items: center;
+  padding: 0.65rem 1rem;
+  background: #3a3731;
+  color: #d4c7b4;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* three dots: the first uses the page accent colour */
+.device-bar::before {
+  content: "";
+  width: 0.6rem;
+  height: 0.6rem;
+  margin-right: 2.4rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 1rem 0 0 #8a8174, 2rem 0 0 #8a8174;
+}
+
+/* tall screenshots scroll inside the frame instead of stretching the page */
+.scroll-frame {
+  max-height: 42rem;
+  overflow-y: auto;
+  background: var(--ink);
+}
+
+.scroll-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.system-panel figcaption {
+  margin-top: 0.75rem;
+  color: var(--mute);
+  font-size: 0.9rem;
+}
+
+@media (min-width: 800px) {
+  .system-board {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---------- end of project page ---------- */
+.project-end {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  padding: clamp(2.5rem,5vw,3.5rem) 0 clamp(3.75rem,8.75vw,6.25rem);
+}
+
+/* previous / next links and the back link share their own row */
+.project-nav {
+  flex-basis: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+}
+
+@media (min-width: 900px) {
+  .page-hero .container {
+    grid-template-columns: 1.05fr .95fr;
+  }
+  .project-section>.container {
+    grid-template-columns: minmax(0,16rem) minmax(0,1fr);
+  }
+  .project-section h2 {
+    align-self: start;
+  }
+}
+
+/* ---------- home page: hero ---------- */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  margin-top: 1.75rem;
+}
+
+.hero-link {
+  color: var(--cream);
+  font-weight: 600;
+}
+
+.hero-link:hover {
+  color: #fff;
+}
+
+.home .hero-stage img {
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+
+/* ---------- home page: section headings ---------- */
+.section-title {
+  margin: 0 0 .75rem;
+  font: 400 clamp(2rem,4vw,2.75rem)/1.1 "Cantata One",serif;
+}
+
+.section-intro {
+  max-width: 40rem;
+  margin-bottom: 2.5rem;
+}
+
+.section-intro p {
+  margin: 0;
+  color: var(--mute);
+}
+
+/* ---------- home page: featured projects ---------- */
+.featured {
+  padding: clamp(3rem,7vw,5.5rem) 0;
+  background: var(--cream);
+}
+
+.feature {
+  display: grid;
+  gap: 1.5rem 3rem;
+  align-items: center;
+  margin-bottom: clamp(2.5rem,6vw,4.5rem);
+}
+
+.feature:last-child {
+  margin-bottom: 0;
+}
+
+.feature-plum {
+  --accent: var(--plum);
+  --accent-dark: var(--plum-dark);
+  --accent-text: var(--plum);
+}
+
+.feature-image {
+  margin: 0;
+  padding: clamp(1rem,2.5vw,1.75rem);
+  border-radius: 1.25rem;
+  background: var(--accent);
+}
+
+.feature-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: .5rem;
+}
+
+.feature-type {
+  margin-bottom: .4rem;
+  color: var(--accent-text);
+  font-size: .9rem;
+  font-weight: 700;
+}
+
+.feature h3 {
+  margin-bottom: .75rem;
+  font: 400 clamp(1.7rem,3vw,2.2rem)/1.15 "Cantata One",serif;
+}
+
+.feature-text p:not(.feature-type) {
+  max-width: 34rem;
+  color: var(--mute);
+}
+
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 1.25rem 0 1.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.chip-list li {
+  padding: .3rem .8rem;
+  border: 1px solid var(--line);
+  border-radius: 2rem;
+  background: #fff;
+  font-size: .9rem;
+}
+
+/* ---------- home page: about me ---------- */
+.about {
+  padding: clamp(3rem,7vw,5.5rem) 0;
+  background: #fff;
+}
+
+.about .container {
+  display: grid;
+  gap: 3rem;
+}
+
+.about-text p {
+  max-width: 62ch;
+  color: var(--mute);
+}
+
+.about-text .intro-text {
+  color: var(--ink);
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem 1.5rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-links a {
+  color: var(--accent-text);
+  font-weight: 600;
+}
+
+.panel {
+  margin-bottom: 1.25rem;
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: var(--cream);
+}
+
+.panel h3 {
+  margin-bottom: .9rem;
+  font-size: 1.15rem;
+}
+
+.panel .chip-list {
+  margin: 0;
+}
+
+.entry {
+  padding: .75rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.entry p {
+  margin: 0;
+}
+
+.entry-year {
+  color: var(--accent-text);
+  font-size: .9rem;
+  font-weight: 700;
+}
+
+.entry-title {
+  font-weight: 600;
+}
+
+.entry-detail {
+  color: var(--mute);
+  font-size: .95rem;
+}
+
+@media (min-width: 900px) {
+  .feature {
+    grid-template-columns: 1.1fr .9fr;
+  }
+  .feature-plum {
+    grid-template-columns: .9fr 1.1fr;
+  }
+  .feature-plum .feature-image {
+    order: 2;
+  }
+  .about .container {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+/* ---------- design system section: expanded board ---------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.system-heading {
+  margin: 0 0 0.5rem;
+  font: 400 1.35rem/1.2 "Cantata One", serif;
+}
+
+.board-intro {
+  grid-column: 1 / -1;
+  margin-top: 1.25rem;
+}
+
+.board-intro p {
+  max-width: 62ch;
+  margin: 0;
+  color: var(--mute);
+}
+
+.system-split {
+  display: grid;
+  grid-column: 1 / -1;
+  gap: 2rem 1.5rem;
+  align-items: start;
+}
+
+.system-stack {
+  display: grid;
+  gap: 2rem;
+}
+
+/* screenshots that sit on a white background, and ones shown in full */
+.scroll-frame.light {
+  background: #fff;
+}
+
+.scroll-frame.fit {
+  max-height: none;
+  overflow: visible;
+}
+
+@media (min-width: 800px) {
+  .system-split {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .system-split.narrow-left {
+    grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+  }
+}
+
+/* token trace: follow one token to its primitive value */
+.token-trace {
+  grid-column: 1 / -1;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border-radius: 0.75rem;
+  background: var(--ink);
+  color: var(--cream);
+  box-shadow: 0 0.5rem 1.5rem rgba(43, 41, 36, 0.18);
+}
+
+.token-trace > p {
+  max-width: 62ch;
+  margin: 0 0 1.25rem;
+  color: #d4c7b4;
+}
+
+.trace-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.trace-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.6rem;
+  padding: 0.9rem 0;
+  border-top: 1px solid rgba(212, 199, 180, 0.25);
+}
+
+.trace-node {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid #6b6558;
+  border-radius: 2rem;
+  background: #3a3731;
+  font-size: 0.95rem;
+}
+
+.trace-start {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 600;
+}
+
+.trace-hex {
+  color: #d4c7b4;
+  font-variant-numeric: tabular-nums;
+}
+
+.swatch {
+  flex: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  background: var(--swatch);
+  box-shadow: 0 0 0 2px var(--cream);
+}
+
+.trace-arrow {
+  position: relative;
+  flex: none;
+  width: 1.6rem;
+  height: 1rem;
+}
+
+.trace-arrow::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0.3rem;
+  border-top: 2px solid #8a8174;
+}
+
+.trace-arrow::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0.05rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-top: 2px solid #8a8174;
+  border-right: 2px solid #8a8174;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+@media (max-width: 599px) {
+  .trace-list li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .trace-arrow {
+    margin: 0.2rem 0 0.2rem 1rem;
+    transform: rotate(90deg);
+  }
+}
+
+/* token count: bars showing semantic tokens per component */
+.token-count {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border-radius: 0.75rem;
+  background: var(--ink);
+  color: var(--cream);
+  box-shadow: 0 0.5rem 1.5rem rgba(43, 41, 36, 0.18);
+}
+
+.token-count > p {
+  margin: 0 0 1.25rem;
+  color: #d4c7b4;
+}
+
+.bar-list {
+  display: grid;
+  gap: 0.9rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bar-list li {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr 1.5rem;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.bar-name {
+  font-weight: 600;
+}
+
+.bar-track {
+  height: 0.9rem;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: #3a3731;
+}
+
+.bar-fill {
+  display: block;
+  width: calc(var(--n) / 9 * 100%);
+  height: 100%;
+  border-radius: 1rem;
+  background: #d4c7b4;
+}
+
+.bar-num {
+  color: #d4c7b4;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+/* ---------- before and after comparison ---------- */
+.compare {
+  display: grid;
+  grid-column: 1 / -1;
+  gap: 2rem 1.5rem;
+  align-items: start;
+  margin-top: 1rem;
+}
+
+@media (min-width: 800px) {
+  /* column widths follow the two image widths, so both show at the same scale */
+  .compare {
+    grid-template-columns: minmax(0, 0.795fr) minmax(0, 1fr);
+  }
+}
+
+/* ---------- home hero: role line and proof points ---------- */
+.hero-role {
+  max-width: 34rem;
+  margin: 0 0 1.25rem;
+  color: var(--cream);
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.hero-proof {
+  max-width: 34rem;
+  margin: 0 0 1.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.hero-proof li {
+  display: flex;
+  gap: 1rem;
+  padding: 0.65rem 0;
+  border-top: 1px solid rgba(212, 199, 180, 0.25);
+}
+
+.hero-proof li::before {
+  content: "";
+  flex: none;
+  width: 0.6rem;
+  height: 0.6rem;
+  margin-top: 0.6rem;
+  background: #d4c7b4;
+}
+
+.hero-proof a {
+  color: var(--cream);
+}
+
+.hero-proof a:hover {
+  color: #fff;
+}
+
+.hero-actions + .hero-lead {
+  margin-top: 2rem;
+}
+
+/* ---------- semantic token panels: both frames the same height ---------- */
+@media (min-width: 800px) {
+  .system-split.narrow-left .scroll-frame {
+    height: 41rem;
+    max-height: none;
+    overflow-y: auto;
+    background: #2c2c2c;
+  }
+
+  /* the group list is shorter than the frame, so clip rather than stretch */
+  .system-split.narrow-left .scroll-frame.fit {
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 799px) {
+  /* keep the small group list at a sharp size on phones */
+  .system-split.narrow-left .system-panel:first-child {
+    max-width: 15rem;
+  }
+}
+
+/* ---------- plain text link at the end of project pages ---------- */
+.project-end a:not(.cssbuttons-io-button) {
+  color: var(--accent-text);
+  font-weight: 600;
+  text-underline-offset: 0.2em;
+}
+
+.project-end a:not(.cssbuttons-io-button):hover {
+  color: var(--ink);
+}
+
+/* ---------- image pairs that share one height ---------- */
+.figure-pair.match-height {
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+@media (min-width: 640px) {
+  /* --cols holds each image's width:height ratio, so both images come out the same height */
+  .figure-pair.match-height {
+    grid-template-columns: var(--cols);
+  }
+}
+
+@media (max-width: 639px) {
+  .figure-block.portrait {
+    max-width: 18rem;
+  }
+}
+
+/* ---------- design system primitives: smaller, lined-up grid ---------- */
+@media (min-width: 800px) {
+  .system-split.primitives {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    align-items: stretch;
+    max-width: 50rem;
+  }
+
+  /* let the type and button panels sit directly in the grid beside the tall colour panel */
+  .system-split.primitives .system-stack {
+    display: contents;
+  }
+
+  .system-split.primitives > .system-panel:first-child {
+    grid-row: 1 / span 2;
+  }
+
+  .system-split.primitives .system-panel {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .system-split.primitives .device-frame {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
+
+  .system-split.primitives .scroll-frame {
+    flex: 1;
+  }
+}
+
+/* captions share one height so the bottoms of the frames line up */
+@media (min-width: 800px) {
+  .system-split.primitives figcaption {
+    min-height: 3.4em;
+  }
+}
+
+/* ---------- skip link for keyboard and screen reader users ---------- */
+.skip-link {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  background: var(--cream);
+  color: var(--ink);
+  font-weight: 600;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* ---------- header and footer share the page's content width ---------- */
+.site-nav .wrapper,
+footer .wrapper {
+  width: min(100% - 2.5rem, 70rem);
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.footer-main {
+  justify-content: space-between;
+}
+
+.footer-columns {
+  justify-content: start;
+  text-align: left;
+}
+
+.footer-copyright {
+  text-align: left;
+}
+
+/* ---------- contact button in the header ---------- */
+.nav-links a.nav-cta {
+  display: inline-block;
+  margin-top: 0.25rem;
+  padding: 0.45rem 1.1rem;
+  border: 1px solid #d4c7b4;
+  border-radius: 2rem;
+  color: #fff;
+}
+
+.nav-links a.nav-cta:hover,
+.nav-links a.nav-cta:focus {
+  background: #d4c7b4;
+  color: var(--ink);
+}
+
+@media (min-width: 1100px) {
+  .nav-links {
+    align-items: center;
+  }
+
+  .nav-links a.nav-cta {
+    margin: 0 0 0 0.35rem;
+    padding: 0.3rem 0.8rem;
+    line-height: 1.4;
+  }
+
+  /* a little extra space between the page links and the first button */
+  .nav-links li:nth-last-child(2) > a.nav-cta {
+    margin-left: 1rem;
+  }
+}
+
+/* ---------- jump links at the top of project pages ---------- */
+.jump-nav {
+  border-bottom: 1px solid var(--line);
+  background: var(--cream);
+}
+
+.jump-nav .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  padding: 1.25rem 0;
+}
+
+.jump-label {
+  color: var(--mute);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.jump-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.jump-nav a {
+  display: inline-block;
+  padding: 0.35rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 2rem;
+  background: #fff;
+  color: var(--ink);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.jump-nav a:hover,
+.jump-nav a:focus-visible {
+  border-color: var(--accent-text);
+  color: var(--accent-text);
+}
+
+.project-section h2 {
+  scroll-margin-top: 2rem;
+}
+
+/* ---------- project cards on the home page: image and title are links ---------- */
+.feature-image a {
+  display: block;
+}
+
+.feature-text h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.feature-text h3 a:hover,
+.feature-text h3 a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+/* ---------- header on small screens: logo, name and menu button on one row ---------- */
+@media (max-width: 1099px) {
+  .Bull-Icon {
+    width: 3rem;
+    height: auto;
+    margin-right: 0.75rem;
+  }
+
+  .brand {
+    margin-right: auto;
+    font-size: 1rem;
+  }
+
+  .nav-links {
+    margin-left: 0;
+  }
+}
+
+/* pairs that sit outside the text column use the full content width, so both images are larger */
+.figure-pair.wide {
+  grid-column: 1 / -1;
+}
+
+/* ---------- LCA page and home card: burnt orange #E07B24 ----------
+   text on the orange is dark; hover goes lighter so dark text stays readable;
+   small orange text uses a darker shade that passes WCAG AA on cream and sand */
+body.lca,
+.feature-ochre {
+  --accent: #e07b24;
+  --accent-dark: #f0a560;
+  --on-accent: var(--ink);
+  --accent-text: #8f420a;
+}
+
+/* the final poster is square, so keep it from dominating the hero and the home card */
+body.lca .hero-stage img,
+.feature-ochre .feature-image img {
+  max-width: 26rem;
+  margin-inline: auto;
+}
+
+/* ---------- wide figures and grids that sit outside the 800px text column ---------- */
+.figure-block.wide,
+.poster-grid.wide-grid,
+.grid-caption,
+.page-strip {
+  grid-column: 1 / -1;
+}
+
+.poster-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0;
+}
+
+@media (min-width: 700px) {
+  .poster-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.poster-grid figure {
+  margin: 0;
+}
+
+.poster-grid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+.grid-caption {
+  margin: 0;
+  color: var(--mute);
+  font-size: 0.9rem;
+}
+
+/* ---------- WordPress page screenshots: a sideways strip on phones, five columns on desktop ---------- */
+.page-strip {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 0.75rem;
+  scroll-snap-type: x mandatory;
+}
+
+.page-strip > .system-panel {
+  flex: 0 0 min(78%, 18rem);
+  scroll-snap-align: start;
+}
+
+/* every frame takes the shape of the shortest screenshot (Geographical Dangers, 1000 x 1599),
+   so no frame shows empty dark space below its image. Taller pages scroll inside. */
+.page-strip .scroll-frame {
+  aspect-ratio: 1000 / 1599;
+  max-height: none;
+  background: #fff;
+}
+
+/* some page names wrap onto two lines, so every title bar is two lines tall
+   and the five screenshots start and end at the same height */
+.page-strip .device-bar {
+  min-height: calc(0.85rem * 1.65 * 2 + 1.3rem);
+  line-height: 1.65;
+}
+
+@media (min-width: 1000px) {
+  .page-strip {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    overflow: visible;
+  }
+
+  .page-strip > .system-panel {
+    flex: none;
+  }
+}
+
+/* ---------- references and in-text actions ---------- */
+.reference-list {
+  margin: 1.5rem 0 0;
+  padding: 0;
+  color: var(--mute);
+  font-size: 0.9rem;
+  list-style: none;
+}
+
+.reference-list li {
+  padding: 0.4rem 0 0.4rem 1.25rem;
+  text-indent: -1.25rem;
+}
+
+.inline-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* keep each header link on one line once the full menu is showing */
+@media (min-width: 1100px) {
+  .nav-links a {
+    white-space: nowrap;
+  }
+}
+
+/* a second block of text in the same section stays in the text column */
+@media (min-width: 900px) {
+  .section-body.continued {
+    grid-column: 2;
+  }
+}
+
+/* full header: wider row and a clear gap between the name and the page links */
+@media (min-width: 1100px) {
+  .site-nav .wrapper {
+    width: min(100% - 2.5rem, 88rem);
+  }
+
+  .Bull-Icon {
+    width: 3.5rem;
+    height: auto;
+    margin-right: 1rem;
+  }
+
+  .brand {
+    margin-right: 3rem;
+  }
+
+  .nav-links {
+    gap: 0.25rem;
+  }
+
+  .nav-links a {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+/* focus outlines on dark areas use cream so they stay visible (WCAG 1.4.11 and 2.4.7) */
+.site-nav :focus-visible,
+footer :focus-visible,
+.finding-grid :focus-visible,
+.token-trace :focus-visible,
+.token-count :focus-visible,
+.image-lightbox :focus-visible {
+  outline-color: var(--cream);
+}
+
+/* the LCA hero image sits on light orange, so its outline is dark */
+body.lca .hero-stage :focus-visible {
+  outline-color: var(--ink);
+}
+
+/* the LCA title is long, so it is set slightly smaller to break into two even lines */
+body.lca .page-hero h1 {
+  font-size: clamp(2.5rem, 5.4vw, 4.1rem);
+}
+
+/* ---------- home: spacing between the role line and the intro ---------- */
+.hero-role + .hero-lead {
+  margin-top: 1.5rem;
+}
+
+
+/* two header buttons stacked in the mobile menu need a little space between them */
+@media (max-width: 1099px) {
+  .nav-links li + li > a.nav-cta {
+    margin-top: 0.5rem;
+  }
+}
+
+/* specialism tags sit under the About me heading instead of in the hero */
+.about-tags {
+  margin: 0 0 1.25rem;
+}
+
+.home .page-hero h1 {
+  margin-top: 0;
+}
+
+/* ---------- project page subheadings ----------
+   same serif and accent line as the main section titles, one step smaller */
+.system-heading,
+.finding-grid h3,
+.change-item h3 {
+  font-family: "Cantata One", serif;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: .005em;
+}
+
+.system-heading::before,
+.finding-grid h3::before,
+.change-item h3::before {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  height: .25rem;
+  margin-bottom: .75rem;
+  background: var(--accent);
+}
+
+.system-heading {
+  margin: 0 0 .9rem;
+  font-size: clamp(1.6rem, 2.8vw, 2rem);
+}
+
+.finding-grid h3,
+.change-item h3 {
+  margin-bottom: .75rem;
+  font-size: clamp(1.35rem, 2vw, 1.6rem);
+}
+
+/* the accent line on dark cards uses sand so it stays visible */
+.finding-grid h3::before {
+  background: #d4c7b4;
+}
+
+.change-item h3 {
+  margin-bottom: 1rem;
+}
+
+/* ---------- home: a shorter hero so the first project shows sooner ---------- */
+.home .page-hero {
+  padding: clamp(2rem, 5vw, 3.75rem) 0;
+}
+
+.home .page-hero h1 {
+  font-size: clamp(2.5rem, 5.5vw, 4.25rem);
+}
+
+.home .hero-stage {
+  padding: clamp(.75rem, 1.5vw, 1rem);
+}
+
+.home .hero-stage figcaption {
+  margin-top: .5rem;
+  font-size: .8rem;
+}
+
+@media (min-width: 900px) {
+  .home .page-hero .container {
+    grid-template-columns: 1.45fr 1fr;
+    gap: 4rem;
+  }
+
+  .home .hero-stage {
+    max-width: 26rem;
+    justify-self: end;
+  }
+}
+
+.home .section-intro {
+  margin-bottom: 2rem;
+}
+
+/* project card buttons fit their text instead of stretching across the card */
+.feature .cssbuttons-io-button {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: .5rem;
+  font-size: 15px;
+  height: 2.6em;
+}
+
+/* ---------- library page: interview findings table ---------- */
+.findings-table-wrap {
+  grid-column: 1 / -1;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: .75rem;
+  background: #fff;
+  box-shadow: 0 .5rem 1.5rem rgba(43,41,36,.08);
+}
+
+.findings-table {
+  width: 100%;
+  min-width: 52rem;
+  border-collapse: collapse;
+  font-size: .95rem;
+  line-height: 1.55;
+  color: var(--mute);
+}
+
+.findings-table caption {
+  padding: 1.1rem 1.25rem .9rem;
+  text-align: left;
+  font: 400 1.35rem/1.2 "Cantata One", serif;
+  color: var(--ink);
+}
+
+.findings-table th,
+.findings-table td {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.findings-table thead th {
+  background: var(--ink);
+  color: var(--cream);
+  font-size: .85rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  border-top: 0;
+}
+
+.findings-table tbody th {
+  width: 15%;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.findings-table tbody tr:nth-child(even) {
+  background: var(--cream);
+}
+
+.findings-table thead th:nth-child(2),
+.findings-table thead th:nth-child(3) { width: 18%; }
+.findings-table thead th:nth-child(4) { width: 27%; }
+.findings-table thead th:nth-child(5) { width: 22%; }
+
+/* the recommendation is what a reader wants most, so it stands out */
+.findings-table td:last-child {
+  color: var(--ink);
+  font-weight: 500;
+  border-left: 3px solid var(--accent);
+}
+
+.findings-table ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.findings-table li + li {
+  margin-top: .4rem;
+}
+
+.findings-table q {
+  font-style: italic;
+  color: var(--ink);
+}
+
+/* on small screens each task becomes a card with labelled rows */
+@media (max-width: 799px) {
+  .findings-table {
+    min-width: 0;
+  }
+
+  .findings-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .findings-table tbody,
+  .findings-table tr,
+  .findings-table th,
+  .findings-table td {
+    display: block;
+    width: auto;
+  }
+
+  .findings-table tbody th {
+    background: var(--ink);
+    color: var(--cream);
+    width: auto;
+  }
+
+  .findings-table td {
+    border-top: 0;
+    padding-top: .5rem;
+  }
+
+  .findings-table td::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: .2rem;
+    color: var(--accent-text);
+    font-size: .8rem;
+    font-weight: 700;
+  }
+
+  .findings-table td:last-child {
+    border-left: 0;
+    padding-bottom: 1.25rem;
+  }
+}
+
+/* ---------- LCA page: user persona card ---------- */
+.persona {
+  margin: 1.75rem 0 0;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border: 1px solid var(--line);
+  border-radius: .75rem;
+  background: #fff;
+  box-shadow: 0 .5rem 1.5rem rgba(43,41,36,.08);
+}
+
+.persona-profile {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.persona-photo {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+  font: 400 1.9rem/1 "Cantata One", serif;
+  object-fit: cover;
+}
+
+.persona-label {
+  margin: 0 0 .15rem;
+  color: var(--accent-text);
+  font-size: .85rem;
+  font-weight: 700;
+}
+
+.persona .persona-name {
+  margin: 0 0 .2rem;
+  font: 400 clamp(1.6rem, 2.8vw, 2rem)/1.15 "Cantata One", serif;
+}
+
+.persona-meta {
+  margin: 0;
+  color: var(--mute);
+}
+
+.persona .finding-grid {
+  margin: 1.5rem 0 0;
+}
+
+/* ---------- home project cards: button plus a text link ---------- */
+.feature-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+}
+
+.feature-actions .cssbuttons-io-button {
+  margin-top: 0;
+}
+
+.text-link {
+  color: var(--accent-text);
+  font-weight: 600;
+  text-underline-offset: 0.2em;
+}
+
+.text-link:hover {
+  color: var(--ink);
+}
+
+/* ---------- small screens, large text and touch: roomier targets, no sideways scrolling ---------- */
+
+/* wrapping: long words and big text break instead of pushing the page wider */
+h1,
+h2,
+h3,
+.tag,
+.hero-lead,
+.hero-role {
+  overflow-wrap: break-word;
+}
+
+.tag {
+  max-width: 100%;
+}
+
+.contact-links a,
+.footer-links a {
+  overflow-wrap: anywhere;
+}
+
+/* grids that were sized by their content now size by the screen */
+@media (max-width: 899px) {
+  .page-hero .container,
+  .about .container,
+  .project-section > .container,
+  .feature {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.project-summary {
+  grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+}
+
+.finding-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+}
+
+.facts-bar dl {
+  grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr));
+}
+
+.figure-pair {
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+}
+
+.figure-pair.match-height {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .figure-pair.match-height {
+    grid-template-columns: var(--cols);
+  }
+}
+
+/* touch targets: at least 44 by 44 pixels for buttons and stand-alone links */
+.nav-toggle {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.cssbuttons-io-button {
+  min-height: 44px;
+}
+
+.hero-link,
+.text-link,
+.contact-links a,
+.project-end a:not(.cssbuttons-io-button) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.jump-nav a {
+  padding: 0.65rem 0.9rem;
+}
+
+.footer-links li + li {
+  margin-top: 0;
+}
+
+.footer-links a {
+  display: inline-block;
+  padding: 0.6rem 0;
+}
+
+.footer-cv-button {
+  min-height: 44px;
+}
+
+@media (max-width: 1099px) {
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    min-width: 0;
+    white-space: normal;
+  }
+
+  .nav-links a {
+    padding-top: 0.65rem;
+    padding-bottom: 0.65rem;
+  }
+
+  .nav-links a.nav-cta {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}
+
+/* footer stacks into one column on narrow phones so the email address stays in one piece */
+@media (max-width: 480px) {
+  .footer-columns {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* respect the reduced motion setting on the arrow buttons too */
+@media (prefers-reduced-motion: reduce) {
+  .cssbuttons-io-button .icon,
+  .cssbuttons-io-button .icon svg {
+    transition: none;
+  }
+}
+
+/* very large text on narrow screens: let the remaining side-by-side layouts stack */
+@media (max-width: 799px) {
+  .system-board,
+  .system-split,
+  .compare {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .system-split.narrow-left .system-panel:first-child {
+    max-width: min(15rem, 100%);
+  }
+}
+
+@media (max-width: 599px) {
+  .change-item dl {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.15rem;
+  }
+
+  .change-item dd + dt {
+    margin-top: 0.6rem;
+  }
+}
+
+.persona-profile {
+  flex-wrap: wrap;
+}
+
+.persona-profile > div {
+  min-width: 0;
+}
+
+/* grid children can shrink below their content width, so wide strips scroll inside themselves */
+.project-section > .container > *,
+.system-split > *,
+.system-board > *,
+.compare > * {
+  min-width: 0;
+}
+
+.system-stack {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.bar-list li {
+  grid-template-columns: minmax(4.5rem, auto) minmax(0, 1fr) auto;
+}
+
+.finding-grid > div {
+  padding: min(1.5rem, 5vw);
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.persona {
+  min-width: 0;
+}
+
+/* very wide screenshots open at a readable size and scroll sideways on small screens */
+.image-lightbox.wide {
+  overflow-x: auto;
+}
+
+.image-lightbox.wide img {
+  width: max(100%, 48rem);
+  max-width: none;
+}
+
+/* buttons grow with their text when a long label wraps (small screens, large text) */
+.cssbuttons-io-button {
+  height: auto;
+  min-height: max(2.8em, 44px);
+  line-height: 1.3;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  box-sizing: border-box;
+}
+
+.cssbuttons-io-button .icon {
+  top: 50%;
+  margin-top: -1.1em;
+}
