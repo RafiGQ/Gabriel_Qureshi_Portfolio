@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact Us | Library support ticket prototype</title>
+    <meta name="description" content="HTML and CSS prototype of the MMU Library support ticket form, with drop-down menus and a related topics panel." />
+    <meta name="robots" content="noindex" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to the form</a>
+
+    <header class="site-header">
+        <img src="images/mmu-logo.png" alt="Manchester Metropolitan University" width="560" height="213" />
+    </header>
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+            <li>Your Library</li>
+            <li>Research and Referencing</li>
+            <li aria-current="page">Starting your Research</li>
+        </ol>
+    </nav>
+
+    <main id="main" class="layout">
+
+        <!-- ============ the ticket form ============ -->
+        <form class="ticket" action="#sent" method="get">
+            <h1>Contact Us</h1>
+
+            <p class="sent-message" id="sent" role="status" tabindex="-1">
+                <strong>Thank you.</strong> In the finished system your enquiry would now be sent to the department you chose. This prototype does not send anything.
+            </p>
+
+            <div class="field-row">
+                <div class="field">
+                    <div class="label-line">
+                        <label for="enquiry-type">Enquiry Type</label>
+                        <span class="hint">
+                            <button type="button" class="hint-button" aria-label="About Enquiry Type" aria-describedby="hint-type">i</button>
+                            <span class="hint-text" role="tooltip" id="hint-type">Choose what kind of help you need.</span>
+                        </span>
+                    </div>
+                    <select id="enquiry-type">
+                        <option value="support" selected>Support</option>
+                        <option value="bug">Bug/ Technical Error</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <div class="label-line">
+                        <label for="department">Select Department</label>
+                        <span class="hint">
+                            <button type="button" class="hint-button" aria-label="About Select Department" aria-describedby="hint-department">i</button>
+                            <span class="hint-text" role="tooltip" id="hint-department">Choose the team that should answer. Related topics appear in the side panel.</span>
+                        </span>
+                    </div>
+                    <select id="department" required>
+                        <option value="" selected>Choose a department</option>
+                        <option value="library">Library Department</option>
+                        <option value="it">IT Department</option>
+                        <option value="external">External Relations Department</option>
+                        <option value="legal">Legal and Governance</option>
+                        <option value="travel">Student Travel</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="label-line">
+                    <label for="email">Student Email</label>
+                    <span class="hint">
+                        <button type="button" class="hint-button" aria-label="About Student Email" aria-describedby="hint-email">i</button>
+                        <span class="hint-text" role="tooltip" id="hint-email">Use your university email address so we can reply to you.</span>
+                    </span>
+                </div>
+                <input type="email" id="email" autocomplete="email" required />
+            </div>
+
+            <div class="field">
+                <div class="label-line">
+                    <label for="title">Enquiry Title</label>
+                    <span class="hint">
+                        <button type="button" class="hint-button" aria-label="About Enquiry Title" aria-describedby="hint-title">i</button>
+                        <span class="hint-text" role="tooltip" id="hint-title">A short summary of your enquiry.</span>
+                    </span>
+                </div>
+                <input type="text" id="title" required />
+            </div>
+
+            <div class="field">
+                <div class="label-line">
+                    <label for="description">Description</label>
+                    <span class="hint">
+                        <button type="button" class="hint-button" aria-label="About Description" aria-describedby="hint-description">i</button>
+                        <span class="hint-text" role="tooltip" id="hint-description">Tell us what happened and what you have already tried.</span>
+                    </span>
+                </div>
+
+                <div class="editor">
+                    <div class="editor-toolbar" role="group" aria-label="Text formatting (not active in this prototype)">
+                        <button type="button" disabled aria-label="Bold"><b>B</b></button>
+                        <button type="button" disabled aria-label="Italic"><i>i</i></button>
+                        <button type="button" disabled aria-label="Underline"><u>U</u></button>
+                        <button type="button" disabled aria-label="Numbered list">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13v2H8zm0 5h13v2H8zm0 5h13v2H8zM3 5h2v4H4V6H3zm0 6h3v1l-1.6 2H6v1H3v-1l1.6-2H3zm0 6h3v4H3v-1h2v-.5H4v-1h1V18H3z" fill="currentColor"/></svg>
+                        </button>
+                        <button type="button" disabled aria-label="Bulleted list">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13v2H8zm0 5h13v2H8zm0 5h13v2H8zM3 5.5h3v3H3zm0 5h3v3H3zm0 5h3v3H3z" fill="currentColor"/></svg>
+                        </button>
+                        <button type="button" disabled aria-label="Add a link">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8h4v2H7a2 2 0 0 0 0 4h4v2H7a4 4 0 0 1 0-8zm6 0h4a4 4 0 0 1 0 8h-4v-2h4a2 2 0 0 0 0-4h-4zm-5 3h8v2H8z" fill="currentColor"/></svg>
+                        </button>
+                    </div>
+                    <textarea id="description" rows="10" required></textarea>
+                    <div class="editor-footer">
+                        <label class="visually-hidden" for="attachment">Attach a file</label>
+                        <input type="file" id="attachment" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="reset" class="button button-secondary">Cancel</button>
+                <button type="submit" class="button button-primary">Submit</button>
+            </div>
+        </form>
+
+        <!-- ============ related topics panel ============ -->
+        <aside class="topics" aria-label="Related topics" aria-live="polite">
+
+            <!-- shown until Library Department is chosen -->
+            <div class="topics-empty">
+                <h2>Related topics will show up here!</h2>
+                <p>These results are dependent on what department and enquiry type you chose.</p>
+                <svg class="topics-icon" viewBox="0 0 64 56" aria-hidden="true">
+                    <path d="M4 26C12 12 22 6 32 6s20 6 28 20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M4 26c5 8 11 13 18 15" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="30" cy="24" r="6" fill="none" stroke="currentColor" stroke-width="3"/>
+                    <circle cx="46" cy="40" r="8" fill="none" stroke="currentColor" stroke-width="3"/>
+                    <path d="M52 46l8 8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+            </div>
+
+            <!-- shown when Library Department is chosen -->
+            <details class="topics-card" open>
+                <summary>
+                    <span class="topics-card-title">Research and Referencing</span>
+                </summary>
+                <p>Learn how to do academic research and reference.</p>
+                <ul>
+                    <li><a href="https://rafigq.github.io/shiny-system/">Starting your Research</a></li>
+                    <li><span>Evaluating your Research</span></li>
+                    <li><span>Search Skills/ Literature Review</span></li>
+                    <li><span>Citing and Referencing</span></li>
+                    <li><span>Research Guides/ Support</span></li>
+                </ul>
+            </details>
+        </aside>
+    </main>
+
+    <footer class="site-footer">
+        <p>HTML and CSS prototype. The form does not send anything, the formatting buttons are not active, and only the first related topic is linked.</p>
+        <p>Created for educational purposes as part of coursework at Manchester Metropolitan University. All university logos and brand assets are the property of MMU.</p>
+    </footer>
+</body>
+</html>

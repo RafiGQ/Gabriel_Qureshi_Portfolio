@@ -1,0 +1,608 @@
+/* ==========================================================
+   Library support ticket form: HTML and CSS prototype
+   No JavaScript. The drop-downs are real <select> menus and
+   the related topics panel is switched with the :has() selector.
+   ========================================================== */
+
+/* ---------- tokens ---------- */
+:root {
+  /* primitives */
+  --black: #000000;
+  --white: #ffffff;
+  --grey-100: #efefef;
+  --grey-300: #d9d9d9;
+  --grey-700: #3c3c3c;
+  --blue-500: #00a9ff;
+  --blue-300: #7fd4ff;
+
+  /* semantic tokens */
+  --page-bg: var(--black);
+  --form-bg: var(--grey-100);
+  --panel-bg: var(--grey-700);
+  --text: var(--black);
+  --text-on-dark: var(--white);
+  --field-bg: var(--white);
+  --field-border: var(--black);
+  --accent: var(--blue-500);
+  --accent-hover: var(--blue-300);
+  --focus: var(--black);
+
+  --radius: 12px;
+  --border: 2px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--page-bg);
+  color: var(--text);
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- focus ---------- */
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.topics :focus-visible,
+.skip-link:focus-visible {
+  outline-color: var(--white);
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 10;
+  padding: .75rem 1rem;
+  background: var(--accent);
+  color: var(--black);
+  font-weight: 700;
+  border-radius: var(--radius);
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ---------- header and breadcrumb ---------- */
+.site-header {
+  padding: 1.5rem 2rem 1rem;
+}
+
+.site-header img {
+  display: block;
+  width: 11.5rem;
+  height: auto;
+}
+
+.breadcrumb {
+  padding: .5rem 2rem;
+  color: var(--text-on-dark);
+  font-weight: 600;
+}
+
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem .6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.breadcrumb li + li::before {
+  content: "/";
+  margin-right: .6rem;
+}
+
+/* ---------- layout: form beside the related topics panel ---------- */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2.35fr) minmax(17rem, 1fr);
+  margin: 0 1rem;
+}
+
+/* ---------- form ---------- */
+.ticket {
+  background: var(--form-bg);
+  padding: 2rem clamp(1rem, 5vw, 4.5rem) 2rem;
+}
+
+h1 {
+  margin: 0 0 1.25rem;
+  font-size: 2.25rem;
+  line-height: 1.15;
+}
+
+.field {
+  margin-bottom: 1.25rem;
+  min-width: 0;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 20rem));
+  gap: 0 .5rem;
+}
+
+.label-line {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: .6rem;
+  margin-bottom: .4rem;
+}
+
+label {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+input[type="email"],
+input[type="text"],
+select,
+textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 1.05rem;
+  color: var(--text);
+  background-color: var(--field-bg);
+  border: var(--border) solid var(--field-border);
+  border-radius: var(--radius);
+}
+
+input[type="email"],
+input[type="text"] {
+  min-height: 3rem;
+  padding: .5rem 1rem;
+}
+
+/* ---------- drop-down menus ---------- */
+select {
+  min-height: 3.2rem;
+  padding: .5rem 2.75rem .5rem 1rem;
+  cursor: pointer;
+  /* fallback for browsers without customisable selects: own arrow, native list */
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M0 0h12L6 8z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: .8rem;
+}
+
+/* browsers that support customisable selects get the designed open list */
+@supports (appearance: base-select) {
+  select,
+  select::picker(select) {
+    appearance: base-select;
+  }
+
+  select {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 1rem;
+    background-image: none;
+  }
+
+  select::picker-icon {
+    content: "";
+    width: .8rem;
+    height: .55rem;
+    background: var(--black);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transition: rotate .15s;
+  }
+
+  select:open::picker-icon {
+    rotate: 180deg;
+  }
+
+  select:open {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  select::picker(select) {
+    margin: calc(var(--border) * -1) 0 0;
+    padding: 0;
+    background: var(--field-bg);
+    border: var(--border) solid var(--field-border);
+    border-radius: 0 0 var(--radius) var(--radius);
+  }
+
+  option {
+    padding: .75rem 1rem;
+    font-size: 1.05rem;
+  }
+
+  option::checkmark {
+    display: none;
+  }
+
+  /* the "Choose a department" prompt is not a real choice, so keep it out of the open list */
+  option[value=""] {
+    display: none;
+  }
+
+  option:checked {
+    font-weight: 600;
+  }
+
+  option:hover,
+  option:focus-visible {
+    background: var(--accent);
+    color: var(--black);
+    outline: none;
+  }
+}
+
+/* ---------- field hints (the "i" buttons) ---------- */
+.hint {
+  display: inline-flex;
+}
+
+.hint-button {
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  font: 700 .8rem/1 Georgia, serif;
+  color: var(--text);
+  background: transparent;
+  border: var(--border) solid var(--field-border);
+  border-radius: 50%;
+  cursor: help;
+}
+
+.hint-text {
+  position: absolute;
+  left: 0;
+  top: calc(100% + .4rem);
+  z-index: 5;
+  width: max-content;
+  max-width: min(18rem, 100%);
+  padding: .5rem .75rem;
+  font-size: .9rem;
+  color: var(--text-on-dark);
+  background: var(--black);
+  border-radius: 8px;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.hint:hover .hint-text,
+.hint:focus-within .hint-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* ---------- description editor ---------- */
+.editor {
+  overflow: hidden;
+  background: var(--field-bg);
+  border: var(--border) solid var(--field-border);
+  border-radius: var(--radius);
+}
+
+.editor:focus-within {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.editor-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem;
+  padding: .3rem .75rem;
+  background: var(--accent);
+}
+
+.editor-toolbar button {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.25rem;
+  padding: 0;
+  font: inherit;
+  font-size: 1.05rem;
+  color: var(--black);
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  cursor: not-allowed;
+}
+
+.editor-toolbar svg {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.editor textarea {
+  display: block;
+  min-height: 14rem;
+  padding: .75rem 1rem;
+  border: 0;
+  border-radius: 0;
+  resize: vertical;
+}
+
+.editor textarea:focus-visible {
+  outline: none; /* the whole editor shows the focus ring */
+}
+
+.editor-footer {
+  padding: .5rem;
+}
+
+input[type="file"] {
+  max-width: 100%;
+  font: inherit;
+  font-size: .95rem;
+}
+
+input[type="file"]::file-selector-button {
+  margin-right: .75rem;
+  padding: .55rem 1.25rem;
+  font: inherit;
+  color: var(--text);
+  background: var(--field-bg);
+  border: var(--border) solid var(--field-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background: var(--grey-100);
+}
+
+/* ---------- buttons ---------- */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: .75rem;
+}
+
+.button {
+  min-width: 7rem;
+  min-height: 3rem;
+  padding: .5rem 1.25rem;
+  font: inherit;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--black);
+  border: var(--border) solid var(--field-border);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.button-secondary {
+  background: var(--grey-300);
+}
+
+.button-primary {
+  background: var(--accent);
+}
+
+.button:hover {
+  background: var(--accent-hover);
+}
+
+/* ---------- confirmation after Submit (shown with :target) ---------- */
+.sent-message {
+  display: none;
+  margin: 0 0 1.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--field-bg);
+  border: var(--border) solid var(--field-border);
+  border-left: .6rem solid var(--accent);
+  border-radius: var(--radius);
+}
+
+.sent-message:target {
+  display: block;
+}
+
+/* ---------- related topics panel ---------- */
+.topics {
+  position: relative;
+  padding: 1rem;
+  color: var(--text-on-dark);
+  background: var(--panel-bg);
+  overflow: hidden;
+}
+
+.topics::after {
+  content: "";
+  position: absolute;
+  inset: auto -30% -6rem -30%;
+  height: 34rem;
+  background: url("images/mmu-emblem.png") center / contain no-repeat;
+  opacity: .22;
+  pointer-events: none;
+}
+
+.topics-empty {
+  position: relative;
+  z-index: 1;
+  padding: 2rem .5rem;
+  text-align: center;
+}
+
+.topics h2 {
+  margin: 0 0 1rem;
+  font-size: 1.4rem;
+}
+
+.topics-empty p {
+  margin: 0 auto 2.5rem;
+  max-width: 22rem;
+  font-size: 1.1rem;
+}
+
+.topics-icon {
+  width: 7rem;
+  height: auto;
+}
+
+.topics-card {
+  display: none;
+  position: relative;
+  z-index: 1;
+  padding: 1rem;
+  background: var(--black);
+}
+
+.topics-card summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 2.75rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+
+.topics-card summary::-webkit-details-marker {
+  display: none;
+}
+
+.topics-card summary::after {
+  content: "";
+  flex: none;
+  width: .7rem;
+  height: .7rem;
+  margin-right: .25rem;
+  border: solid var(--white);
+  border-width: 0 0 2px 2px;
+  rotate: -45deg;
+  transition: rotate .15s;
+}
+
+.topics-card[open] summary::after {
+  rotate: 135deg;
+}
+
+.topics-card p {
+  margin: .5rem 0 1rem;
+  max-width: 22rem;
+}
+
+.topics-card ul {
+  display: grid;
+  gap: .3rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.topics-card li > * {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.75rem;
+  padding: .75rem 1.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--black);
+  text-decoration: none;
+  background: var(--accent);
+}
+
+.topics-card li > *::after {
+  content: "\2192";
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.topics-card a:hover {
+  background: var(--accent-hover);
+  text-decoration: underline;
+}
+
+/* the switch: choosing Library Department swaps the empty state for the topics */
+.layout:has(#department option[value="library"]:checked) .topics-empty {
+  display: none;
+}
+
+.layout:has(#department option[value="library"]:checked) .topics-card {
+  display: block;
+}
+
+/* ---------- footer ---------- */
+.site-footer {
+  padding: 1.25rem 2rem 2rem;
+  color: var(--text-on-dark);
+  font-size: .9rem;
+}
+
+.site-footer p {
+  margin: 0 0 .5rem;
+  max-width: 60rem;
+}
+
+/* ---------- smaller screens ---------- */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .topics::after {
+    inset: auto -10% -8rem 30%;
+    height: 24rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .site-header,
+  .breadcrumb,
+  .site-footer {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .layout {
+    margin: 0;
+  }
+
+  .field-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  h1 {
+    font-size: 1.9rem;
+  }
+
+  .form-actions .button {
+    flex: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
